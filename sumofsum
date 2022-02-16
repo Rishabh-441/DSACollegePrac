@@ -1,0 +1,30 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Question {
+    public static void main(String[] args) {
+        if (args.length > 3) {
+            return;
+        }
+        Queue<String> queue = new LinkedList<>();
+        for (var x: args) {
+            queue.add(sumOfSum(x));
+        }
+
+        System.out.println(queue);
+    }
+
+    private static String sumOfSum(String str) {
+        int sum = 0;
+        if (str.charAt(0) == '-') {
+            str = str.substring(1);
+        }
+        for (int i = 0; i < str.length(); i++) {
+            for (int j = i; j < str.length(); j++) {
+                sum += str.charAt(j) - '0';
+            }
+        }
+        return Integer.toString(sum);
+    }
+
+}
